@@ -29,6 +29,14 @@ class VideoPlayer extends Component {
         this.player.src(props.src)
         this.player.poster(props.poster)
         this.set_controls_visibility(this.player, props.hideControls);
+        this.player.addRemoteTextTrack(
+            {
+              language: "en",
+              kind: "captions",
+              src: props.textTrack
+            },
+            false
+          );
     }
 
     generate_player_options(props){
@@ -90,13 +98,14 @@ class VideoPlayer extends Component {
 
     render() {
         return (
-            <video id={this.playerId} playsInline muted className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
+            <video id={this.playerId} crossorigin="anonymous" playsInline muted className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
         )
     }
 }
 
 VideoPlayer.propTypes = {
     src: PropTypes.string,
+    textTrack: PropTypes.string,
     poster: PropTypes.string,
     controls: PropTypes.bool,
     autoplay: PropTypes.bool,
@@ -120,6 +129,7 @@ VideoPlayer.propTypes = {
 
 VideoPlayer.defaultProps = {
     src: "",
+    textTrack: "",
     poster: "",
     controls: true,
     autoplay: false,
