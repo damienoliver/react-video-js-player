@@ -98,7 +98,7 @@ class VideoPlayer extends Component {
 
     render() {
         return (
-            <video id={this.playerId} crossOrigin="anonymous" playsInline muted className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
+            <video id={this.playerId} crossOrigin="anonymous" loop={this.props.loop} playsInline muted className={`video-js ${this.props.bigPlayButtonCentered? 'vjs-big-play-centered' : ''} ${this.props.className}`}></video>
         )
     }
 }
@@ -124,7 +124,8 @@ VideoPlayer.propTypes = {
     onEnd: PropTypes.func,
     playbackRates: PropTypes.arrayOf(PropTypes.number),
     hidePlaybackRates: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
+    loop: PropTypes.bool
 }
 
 VideoPlayer.defaultProps = {
@@ -132,6 +133,7 @@ VideoPlayer.defaultProps = {
     textTrack: "",
     poster: "",
     controls: true,
+    loop: false,
     autoplay: false,
     preload: 'auto',
     playbackRates: [0.5, 1, 1.5, 2],
