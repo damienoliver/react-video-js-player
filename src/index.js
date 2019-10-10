@@ -104,7 +104,7 @@ class VideoPlayer extends Component {
 }
 
 VideoPlayer.propTypes = {
-    src: PropTypes.string,
+    src: PropTypes.any,
     textTrack: PropTypes.string,
     poster: PropTypes.string,
     controls: PropTypes.bool,
@@ -129,7 +129,6 @@ VideoPlayer.propTypes = {
 }
 
 VideoPlayer.defaultProps = {
-    src: "",
     textTrack: "",
     poster: "",
     controls: true,
